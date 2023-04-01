@@ -28,7 +28,8 @@ RUN    apk update \
 	&& rm -rf /tmp/dependencies  \
 #	&& rm -rf ${JMETER_HOME}/bin/examples/CSVSample.jmx
 	&& chmod +x ${JMETER_HOME}/bin/examples/
-COPY API_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
+COPY   API_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/  \
+	&& UI_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
  	
 
 # TODO: plugins (later)
