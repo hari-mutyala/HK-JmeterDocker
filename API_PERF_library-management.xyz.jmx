@@ -42,41 +42,6 @@
             <stringProp name="Argument.value">Temp123</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="IPAddress" elementType="Argument">
-            <stringProp name="Argument.name">IPAddress</stringProp>
-            <stringProp name="Argument.value">uat.library-management.xyz</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="Protocol" elementType="Argument">
-            <stringProp name="Argument.name">Protocol</stringProp>
-            <stringProp name="Argument.value">http</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="Port" elementType="Argument">
-            <stringProp name="Argument.name">Port</stringProp>
-            <stringProp name="Argument.value">80</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="ThinkTime" elementType="Argument">
-            <stringProp name="Argument.name">ThinkTime</stringProp>
-            <stringProp name="Argument.value">2000</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="Pacing" elementType="Argument">
-            <stringProp name="Argument.name">Pacing</stringProp>
-            <stringProp name="Argument.value">5000</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="Username" elementType="Argument">
-            <stringProp name="Argument.name">Username</stringProp>
-            <stringProp name="Argument.value">admin@admin.in</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="Password" elementType="Argument">
-            <stringProp name="Argument.name">Password</stringProp>
-            <stringProp name="Argument.value">Temp123</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>

@@ -26,7 +26,6 @@ RUN    apk update \
 	&& mkdir -p /opt  \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies  \
-#	&& rm -rf ${JMETER_HOME}/bin/examples/CSVSample.jmx
 	&& chmod +x ${JMETER_HOME}/bin/examples/
 COPY API_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
 COPY UI_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
