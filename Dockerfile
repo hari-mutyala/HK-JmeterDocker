@@ -33,7 +33,8 @@ COPY UI_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
 #RUN sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
 RUN    chmod +x ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx  \
 	&& cd ${JMETER_HOME}/bin/examples  \
-	&& ls -l
+	&& ls -l  \
+	&& sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
  	
 
 # TODO: plugins (later)
