@@ -29,6 +29,8 @@ RUN    apk update \
 	&& chmod +x ${JMETER_HOME}/bin/examples/
 COPY API_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
 COPY UI_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
+RUN sh ${JMETER_HOME}/bin/jmeter.sh -n -t bin/examples/API_PERF_library-management.xyz.jmx
+
  	
 
 # TODO: plugins (later)
