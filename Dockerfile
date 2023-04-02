@@ -36,7 +36,7 @@ RUN    chmod +x ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx 
 	&& mkdir -p -m 777 $${JMETER_HOME}/bin/reports  \
 #	&& cd ${JMETER_HOME}/bin/examples  \
 #	&& ls -l  \
-	&& /entrypoint.sh -n -t ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
+	&& entrypoint.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
  	
 
 # TODO: plugins (later)
