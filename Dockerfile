@@ -39,7 +39,7 @@ RUN    chmod +x ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx 
 #	&& ls -l  \
 #	&& entrypoint.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
  	
-
+CMD sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx -l ${JMETER_HOME}/bin/reports/report2.log -e -o ${JMETER_HOME}/bin/reports
 # TODO: plugins (later)
 # && unzip -oq "/tmp/dependencies/JMeterPlugins-*.zip" -d $JMETER_HOME
 
@@ -47,8 +47,8 @@ RUN    chmod +x ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx 
 ENV PATH $PATH:$JMETER_BIN
 
 # Entrypoint has same signature as "jmeter" command
-COPY entrypoint.sh /
+#COPY entrypoint.sh /
 
 WORKDIR	${JMETER_HOME}
 
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]

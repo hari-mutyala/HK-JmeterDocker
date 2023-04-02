@@ -1,21 +1,25 @@
-[![Docker Build](https://github.com/justb4/docker-jmeter/actions/workflows/docker.yml/badge.svg)](https://github.com/justb4/docker-jmeter/actions/workflows/docker.yml)
-[![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/justb4)
+# UNFI POC - Commands to execute
+
+git clone https://github.com/hari-mutyala/HK-JmeterDocker.git
+cd HK-JmeterDocker/
+docker build -t <<reponame>>/hk-jmeter:v1 .
+docker push <<reponame>>/hk-jmeter:v1
+docker pull <<reponame>>/hk-jmeter:v1
+docker run hmutyala/hk-jmeter:v1 -n -t bin/examples/API_PERF_library-management.xyz.jmx -l bin/reports/report2.log -e -o bin/reports
+docker container cp dacc3306aaac:/opt/apache-jmeter-5.5/bin/reports .
+cd reports/
+zip -r API_PERF_library-management-results.zip .
+
+
 
 # docker-jmeter
 ## Image on Docker Hub
 
 Docker image for [Apache JMeter](http://jmeter.apache.org).
 This Docker image can be run as the ``jmeter`` command.
-Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
+Find Images of this repo on [Docker Hub](https://hub.docker.com/r/hmutyala/hk-jmeter).
 Starting version 5.4 Docker builds/pushes
 are [executed via GitHub Workflows](.github/workflows/docker.yml).
-
-## Donate
-With **over 10 Million Pulls from DockerHub**, this Docker Image is increasingly popular.
-To support its active maintainance consider making a donation, for example via PayPal:
-
-[![Donate with PayPal](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](https://www.paypal.com/biz/fund?id=3QZW9SNGCWBM4)
-
 
 ## Security Patches
 As you may have seen in the news, a new zero-day exploit has been reported against the
@@ -39,9 +43,7 @@ The update to 5.4.2 includes the updated Apache log4j2 to 2.16.0 (from 2.13.3), 
 With the script [build.sh](build.sh) the Docker image can be build
 from the [Dockerfile](Dockerfile) but this is not really necessary as
 you may use your own ``docker build`` commandline. Or better: use one
-of the pre-built Images from [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
-
-See end of this doc for more detailed build/run/test instructions (thanks to @wilsonmar!)
+of the pre-built Images from [Docker Hub](https://hub.docker.com/r/hmutyala/hk-jmeter).
 
 ### Build Options
 
@@ -99,85 +101,6 @@ sudo docker run --name ${NAME} -i -e JMETER_CUSTOM_PLUGINS_FOLDER=/jmeter/plugin
 ```
 
 
-## Do it for real: detailed build/run/test
-
-Contribution by @wilsonmar
-
-1. In a Terminal/Command session, install Git, navigate/make a folder, then:
-
-   ```
-   git clone https://github.com/justb4/docker-jmeter.git
-   cd docker-jmeter
-   ```
-
-1. Run the Build script to download dependencies, including the docker CLI:
-
-   ```
-   ./build.sh
-   ```
-
-   If you view this file, the <strong>docker build</strong> command within the script is for a specific version of JMeter and implements the <strong>Dockerfile</strong> in the same folder.
-
-   If you view the Dockerfile, notice the `JMETER_VERSION` specified is the same as the one in the build.sh script. The FROM keyword specifies the Alpine operating system, which is very small (less of an attack surface). Also, no JMeter plug-ins are used.
-
-   At the bottom of the Dockerfile is the <strong>entrypoint.sh</strong> file. If you view it, that's where JVM memory settings are specified for <strong>jmeter</strong> before it is invoked. PROTIP: Such settings need to be adjusted for tests of more complexity.
-
-   The last line in the response should be:
-
-   <tt>Successfully tagged justb4/jmeter:5.5</tt>
-
-1. Run the test script:
-
-   ```
-   ./test.sh
-   ```
-
-   If you view the script, note it invokes the <strong>run.sh</strong> script file stored at the repo's root. View that file to see that it specifies docker image commands.
-
-   File and folder names specified in the test.sh script is reflected in the last line in the response for its run:
-
-   <pre>
-   ==== HTML Test Report ====
-   See HTML test report in tests/trivial/report/index.html
-   </pre>
-
-   *Alternative exec by Makefile:*
-
-   Like the bash script, it is possible to run the tests through a **Makefile** simply with the `make` command or by sending parameters as follows:
-
-   ```sh
-   TARGET_HOST="www.map5.nl" \
-   TARGET_PORT="80" \
-   THREADS=10 \
-   TEST=trivial \
-   make
-   ```
-
-1. Switch to your machine's Folder program and navigate to the folder containing files which replaces files cloned in from GitHub:
-
-   ```
-   cd tests/trivial
-   ```
-
-   The files are:
-
-   * jmeter.log
-   * reports folder (see below)
-   * test-plan.jmx containing the JMeter test plan.
-   * test-plan.jtl containing statistics from the run displayed by the index.html file.
-
-
-1. Navigate into the <strong>report</strong> folder and open the <strong>index.html</strong> file to pop up a browser window displaying the run report. On a Mac Terminal:
-
-   ```
-   cd report
-   open index.html
-   ```
-
-   Here is a sample report:
-
-   ![docker-jmeter-report](https://user-images.githubusercontent.com/300046/54093523-1a1c3d80-436f-11e9-8930-750e9b736084.png)
-
 
 ## Specifics
 
@@ -207,7 +130,5 @@ sudo docker run --name ${NAME} -i -v ${WORK_DIR}:${WORK_DIR} -w ${WORK_DIR} ${IM
 
 ## Credits
 
-Thanks to https://github.com/hauptmedia/docker-jmeter
-and https://github.com/hhcordero/docker-jmeter-server for providing
-the Dockerfiles that inspired me.   @wilsonmar for contributing detailed instructions. Others
-that tested/reported after version updates.
+Thanks to 
+https://github.com/justb4/docker-jmeter/
