@@ -31,10 +31,12 @@ RUN    apk update \
 COPY API_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
 COPY UI_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
 #RUN sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
-#RUN    chmod +x ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx  \
+RUN    chmod +x ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx  \
+	&& apk add --update zip  \
+	&& mkdir -p -m 777 $${JMETER_HOME}/bin/reports  \
 #	&& cd ${JMETER_HOME}/bin/examples  \
 #	&& ls -l  \
-#	&& sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
+	&& /entrypoint.sh -n -t ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
  	
 
 # TODO: plugins (later)
