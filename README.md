@@ -2,14 +2,11 @@
 
 git clone https://github.com/hari-mutyala/HK-JmeterDocker.git
 cd HK-JmeterDocker/
-docker build -t <<reponame>>/hk-jmeter:v1 .
-docker push <<reponame>>/hk-jmeter:v1
-docker pull <<reponame>>/hk-jmeter:v1
-docker run hmutyala/hk-jmeter:v1 -n -t bin/examples/API_PERF_library-management.xyz.jmx -l bin/reports/report2.log -e -o bin/reports
-docker container cp dacc3306aaac:/opt/apache-jmeter-5.5/bin/reports .
-cd reports/
-zip -r API_PERF_library-management-results.zip .
-
+docker build -t hmutyala/hk-jmeter:v1 .
+docker push hmutyala/hk-jmeter:v1
+docker pull hmutyala/hk-jmeter:v1
+docker run --name hk-jmeterpoc hmutyala/hk-jmeter:v1
+docker container cp hk-jmeterpoc:/opt/apache-jmeter-5.5/bin/reports/API_PERF_library-management-results.zip .
 
 
 # docker-jmeter
