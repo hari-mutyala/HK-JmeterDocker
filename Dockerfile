@@ -26,20 +26,20 @@ RUN    apk update \
 	&& mkdir -p /opt  \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies  \
-	&& chmod +x ${JMETER_HOME}/bin/examples/
-
-COPY API_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
-COPY UI_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
-#RUN sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
-RUN    chmod +x ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx  \
+	&& chmod +x ${JMETER_HOME}/bin/examples/  \
 	&& apk add --update zip  \
 	&& mkdir -p -m 777 $${JMETER_HOME}/bin/reports  \
 	&& chmod 777 $${JMETER_HOME}/bin/reports
-#	&& cd ${JMETER_HOME}/bin/examples  \
-#	&& ls -l  \
-#	&& entrypoint.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
- 	
-CMD sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx -l ${JMETER_HOME}/bin/reports/report2.log -e -o ${JMETER_HOME}/bin/reports
+
+COPY API_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
+COPY UI_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
+
+RUN  chmod +x ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx
+	 	
+CMD    sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/API_PERF_library-management.xyz.jmx -l ${JMETER_HOME}/bin/reports/report2.log -e -o ${JMETER_HOME}/bin/reports  \
+    && cd reports/  \
+    && zip -r API_PERF_library-management-results.zip .
+	
 # TODO: plugins (later)
 # && unzip -oq "/tmp/dependencies/JMeterPlugins-*.zip" -d $JMETER_HOME
 
