@@ -1,13 +1,14 @@
 # UNFI POC - Commands to execute
-
+# API Performance Testing Stage
 git clone https://github.com/hari-mutyala/HK-JmeterDocker.git
 cd HK-JmeterDocker/
 docker build -t hmutyala/hk-jmeter:v1 .
 docker push hmutyala/hk-jmeter:v1
 docker pull hmutyala/hk-jmeter:v1
 docker run --name hk-jmeterpoc hmutyala/hk-jmeter:v1
-docker container cp hk-jmeterpoc:/opt/apache-jmeter-5.5/bin/reports/API_PERF_library-management-results.zip .
+docker container cp hk-jmeterpoc:/opt/apache-jmeter-5.5/bin/reports/API_PERF_Results.zip .
 
+# UI Performance Testing Stage
 
 # docker-jmeter
 ## Image on Docker Hub

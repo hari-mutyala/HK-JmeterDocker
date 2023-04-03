@@ -34,7 +34,6 @@ RUN    apk update \
 	&& chmod 777 $${JMETER_HOME}/bin/reports
 
 COPY ${SCRIPT_NAME} ${JMETER_HOME}/bin/examples/
-#COPY UI_PERF_library-management.xyz.jmx ${JMETER_HOME}/bin/examples/
 
 RUN  chmod +x ${JMETER_HOME}/bin/examples/${SCRIPT_NAME}
 	 	
